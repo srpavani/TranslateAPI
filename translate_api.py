@@ -54,7 +54,7 @@ class TranslationTask:
 # Dicionário global para armazenar as tasks
 translation_tasks = {}
 
-def upload_document_to_deepl(file_path: str, target_lang: str = 'EN-US', source_lang: str = 'PT') -> tuple:
+def upload_document_to_deepl(file_path: str, target_lang: str = 'EN-US', source_lang: str = 'PT', glossary_id: str = 'GLOSSARY_ID_AQUI') -> tuple:
     """
     Envia um documento para tradução na API DeepL
     Retorna: (document_id, document_key)
@@ -66,7 +66,8 @@ def upload_document_to_deepl(file_path: str, target_lang: str = 'EN-US', source_
             }
             data = {
                 'target_lang': target_lang,
-                'source_lang': source_lang
+                'source_lang': source_lang,
+                "glossary_id": glossary_id
             }
             
             response = requests.post(
